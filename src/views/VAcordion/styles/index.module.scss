@@ -1,0 +1,64 @@
+@import '../../../styles/variables/index.scss';
+
+.details {
+  background-color: var(--gx-color-white);
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+
+  cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &[open] > .details__summary > .details__summary_icon {
+    color: var(--gx-color-primary2);
+    transform: rotate(-180deg);
+    transition: var(--gx-transition-short) transform ease;
+  }
+
+  &[open] > .details__content {
+    display: block;
+  }
+
+  &__content {
+    position: relative;
+    padding: 18px 20px;
+
+    transition: transform 1s ease;
+    &[open='true'] {
+      -moz-animation-duration: 0.7s;
+      -webkit-animation-duration: 0.7s;
+      -moz-animation-name: fadeInDown;
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+      animation-duration: 0.7s;
+    }
+  }
+
+  &__summary {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 18px 20px;
+    background-color: transparent;
+    
+    @include flex(lc);
+
+    &[data-animation = "true"] {
+      -moz-animation-duration: 0.7s;
+      -webkit-animation-duration: 0.7s;
+      -moz-animation-name: fadeInDown;
+      -webkit-animation-name: fadeInDown;
+    }
+
+    &_icon {
+      display: flex;
+      color: var(--gx-color-blue);
+      @include square-icon(16);
+      flex-shrink: 0;
+      margin-right: 18px;
+      transform: rotate(0);
+      transition: var(--gx-transition-short) transform ease;
+    }
+  }
+
+}

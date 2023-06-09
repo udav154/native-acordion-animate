@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import styles from './styles/index.module.scss'
+import styles from '../styles/index.module.scss'
 import icons from './icons'
 
 const VIcon = ({ type = 'IconArrow', className = '' }) => {

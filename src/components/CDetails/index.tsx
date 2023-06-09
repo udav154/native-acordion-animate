@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import VDetails from '../../views/VDetails'
+import VDetails from '../../views/VAcordion/VDetails'
 
 interface ICDetails {
   forceClose?: boolean
@@ -8,7 +8,7 @@ interface ICDetails {
   animationOn?: boolean
   children: React.ReactNode
 }
-// Создайте тип для анимации
+
 type AnimationType = Animation | null;
 
 const CDetails: React.FC<ICDetails> = ({
@@ -110,7 +110,7 @@ const CDetails: React.FC<ICDetails> = ({
         height: [startHeight, endHeight]
       },
       {
-        duration: 500,
+        duration: 1300,
         easing: 'cubic-bezier(.38,.83,.42,1)'
       }
     )
@@ -165,7 +165,7 @@ const CDetails: React.FC<ICDetails> = ({
         height: [startHeight, endHeight]
       },
       {
-        duration: 500,
+        duration: 1300,
         easing: 'cubic-bezier(.38,.83,.42,1)'
       }
     )

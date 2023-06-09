@@ -1,8 +1,8 @@
 import CDetails from './components/CDetails'
-import VSummary from './views/VSummary'
-import VContent from './views/VContent'
+import VSummary from './views/VAcordion/VSummary'
+import VContent from './views/VAcordion/VContent'
 import './styles/index.scss'
-import VIcon from './views/VIcon'
+import VIcon from './views/VAcordion/VIcon'
 
 const mapArr = new Array(7).fill(1)
 
@@ -22,6 +22,9 @@ function App() {
           })}
         </VContent>
       </CDetails >
+
+
+
     </div>
   )
 }
