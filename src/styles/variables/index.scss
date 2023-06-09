@@ -1,0 +1,648 @@
+$xs-reg: 450px;
+
+$xxxs-width: 321.98px;
+$xxs-width: 361.98px;
+$xs-width: 567.98px;
+$sm-width: 767.98px;
+$md-width: 991.98px;
+$lg-width: 1289.98px;
+$xl-width: 1559.98px;
+$xxl-width: 1749.98px;
+
+$base-color: #ddd;
+$shine-color: #e8e8e8;
+$animation-duration: 1.6s;
+
+@mixin keyframes($name){
+  @keyframes #{$name}{
+    @content;
+  }
+}
+
+@mixin animationShowContentOnY {
+  @keyframes animationShowContentOnY {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin background-gradient {
+  background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px);
+  background-size: 600px;
+}
+
+@mixin shine-avatar($avatar-offset: 40 + 16) {
+  @include keyframes(shine-avatar) {
+    0% {
+      background-position: -100px + $avatar-offset
+    }
+    40%, 100% {
+      background-position: 140px + $avatar-offset
+    }
+  }
+  background-color: #ccc;
+  @include background-gradient;
+  animation: shine-avatar $animation-duration infinite linear;
+}
+
+
+@mixin shine-lines {
+  @include keyframes(shine-lines) {
+    0% {
+      background-position: -100px
+    }
+    40%, 100% {
+      background-position: 140px
+    }
+  }
+  @include background-gradient;
+  animation: shine-lines $animation-duration infinite linear;
+  background-color: $base-color;
+}
+
+@mixin row($mr) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$mr}px;
+  margin-right: -#{$mr}px;
+}
+
+@mixin row-flex() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin col($colsize, $mrg) {
+  width: calc(100% / 12 * #{$colsize} - #{$mrg * 2}px - 0.1px);
+  margin-left: #{$mrg}px;
+  margin-right: #{$mrg}px;
+  word-wrap: break-word;
+}
+@mixin scrollBar{
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: transparent;
+    /* «цвет полосы скроллбара» */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--gx-color-input-hover);
+    /* «цвет ползунка» */
+  }
+}
+
+@mixin coloff($coloffset, $mrg2) {
+  margin-left: calc(100% / 12 * #{$coloffset} + #{$mrg2}px);
+}
+
+%container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1520px;
+}
+
+
+
+@mixin ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin flex($type) {
+  display: flex;
+  @if ($type == "lc") {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  @if ($type == "sc") {
+    justify-content: space-between;
+    align-items: center;
+  }
+  @if ($type == "rc") {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  @if ($type == "cc") {
+    justify-content: center;
+    align-items: center;
+  }
+  @if ($type == "ct") {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  @if ($type == "lt") {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  @if ($type == "st") {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  @if ($type == "rt") {
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  @if ($type == "ce") {
+    justify-content: center;
+    align-items: flex-end;
+  }
+  @if ($type == "le") {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  @if ($type == "se") {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  @if ($type == "re") {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@mixin flexcol($type: "t", $wrap: "w") {
+  display: flex;
+  flex-direction: column;
+  @if ($type == "t") {
+    justify-content: flex-start;
+  }
+  @if ($type == "s") {
+    justify-content: space-between;
+  }
+  @if ($wrap == "w") {
+    flex-wrap: wrap;
+  }
+  @if ($type == "n") {
+    flex-wrap: nowrap;
+  }
+}
+
+@mixin desktop-lg {
+  @media screen and (max-width: 2560px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (max-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin laptop-lg {
+  @media screen and (max-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin laptop-md {
+  @media screen and (max-width: 1460px) {
+    @content;
+  }
+}
+
+@mixin laptop-sm {
+  @media screen and (max-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin laptop-xs {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet-lg {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media screen and (max-width: 810px) {
+    @content;
+  }
+}
+@mixin tablet-md {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 568px) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin mobile-md {
+  @media screen and (max-width: 360px) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media screen and (max-width: 320px) {
+    @content;
+  }
+}
+@mixin mobile-550 {
+  @media screen and (max-width: 550px) {
+    @content;
+  }
+}
+
+@mixin laptop-old {
+  @media screen and (max-height: 810px) and (min-width: 1150px) {
+    @content;
+  }
+}
+
+@mixin padding-for-mobile {
+  @include laptop-md {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  @include mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@mixin font($size) {
+  @if ($size == 8) {
+    font-size: 8px;
+    line-height: 10px;
+  }
+  @if ($size == 9) {
+    font-size: 9px;
+    line-height: 11px;
+  }
+  @if ($size == 10) {
+    font-size: 10px;
+    line-height: 12px;
+  }
+  @if ($size == 11) {
+    font-size: 11px;
+    line-height: 13px;
+  }
+  @if ($size == 12) {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  @if ($size == 13) {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  @if ($size == 14) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  @if ($size == 15) {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  @if ($size == 16) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  @if ($size == 18) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  @if ($size == 20) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  @if ($size == 21) {
+    font-size: 21px;
+    line-height: 25px;
+  }
+  @if ($size == 22) {
+    font-size: 22px;
+    line-height: 27px;
+  }
+  @if ($size == 24) {
+    font-size: 24px;
+    line-height: 29px;
+  }
+  @if ($size == 25) {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  @if($size == 26) {
+    font-size: 26px;
+    line-height: 31px;
+  }
+  @if ($size == 28) {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  @if ($size == 29) {
+    font-size: 29px;
+    line-height: 35px;
+  }
+  @if ($size == 30) {
+    font-size: 30px;
+    line-height: 39px;
+  }
+  @if ($size == 32) {
+    font-size: 32px;
+    line-height: 130%;
+  }
+  @if ($size == 34) {
+    font-size: 34px;
+    line-height: 130%;
+  }
+  @if ($size == 35) {
+    font-size: 35px;
+    line-height: 43px;
+  }
+  @if ($size == 32) {
+    font-size: 32px;
+    line-height: 48px;
+    @include mobile() {
+      @include font((30));
+    }
+  }
+  @if($size == 36){
+    font-size: 36px;
+    line-height: 49px;
+  }
+  @if($size == 38){
+    font-size: 38px;
+    line-height: 49px;
+  }
+  @if($size == 39){
+    font-size: 39px;
+    line-height: 49px;
+  }
+  @if ($size == 40) {
+    font-size: 40px;
+    line-height: 49px;
+  }
+  @if ($size == 44) {
+    font-size: 44px;
+    line-height: 130%;
+  }
+  @if ($size == 48) {
+    font-size: 48px;
+    line-height: 130%;
+  }
+  @if ($size == 50) {
+    font-size: 50px;
+    line-height: 65px;
+  }
+  @if ($size == 55) {
+    font-size: 55px;
+    line-height: 120%;
+  }
+  @if($size == 66) {
+    font-size: 66px;
+    line-height: 85px;
+  }
+  @if($size == 68) {
+    font-size: 68px;
+    line-height: 88px;
+  }
+  @if($size == 60){
+    font-size: 60px;
+    line-height: 78px;
+  }
+  @if($size == 80) {
+    font-size: 80px;
+    line-height: 104px;
+  }
+}
+
+@mixin square-icon($size) {
+  --icon-width: #{$size}px;
+  --icon-height: #{$size}px;
+}
+
+@mixin xxl {
+  @media screen and (max-width: #{$xxl-width}) {
+      @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (max-width: #{$xl-width}) {
+      @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (max-width: #{$lg-width}) {
+      @content;
+  }
+}
+
+@mixin md {
+  @media screen and (max-width: #{$md-width}) {
+      @content;
+  }
+}
+
+@mixin sm {
+  @media screen and (max-width: #{$sm-width}){
+      @content;
+  }
+}
+
+@mixin xs {
+  @media screen and (max-width: #{$xs-width}) {
+      @content;
+  }
+}
+
+@mixin xxs {
+  @media screen and (max-width: #{$xxs-width}) {
+      @content;
+  }
+}
+
+@mixin xxxs {
+  @media screen and (max-width: #{$xxs-width}) {
+      @content;
+  }
+}
+
+@mixin xsReg {
+  @media screen and (max-width: #{$xs-reg}) {
+      @content;
+  }
+}
+
+@mixin h($s) {
+  @extend %heading;
+  
+  @if $s == 1 {
+      font-size: 28px;
+      line-height: 1.2;
+      
+      @include xxl {
+      }
+      @include xl {
+          font-size: 28px;
+      }
+      @include md {
+      }
+      @include sm {
+      }
+      @include xs {
+          font-size: 30px;
+      }
+  } @else if $s == 2 {
+      font-size: 28px;
+      letter-spacing: -0.6px;
+      line-height: 1.2;
+    
+      @include xxl {
+      }
+      @include xl {
+          font-size: 44px;
+      }
+      @include md {
+      }
+      @include sm {
+          font-size: 26px;
+      }
+  } @else if $s == 3 {
+      font-size: 22px;
+      letter-spacing: 0.2px;
+      
+      @include xxl {
+      }
+      @include xl {
+          font-size: 24px;
+      }
+      @include md {
+          font-size: 20px;
+      }
+      @include sm {
+          font-size: 18px;
+      }
+  } @else if $s == 4 {
+      font-size: 24px;
+      letter-spacing: 0.2px;
+      
+      @include xxl {
+      }
+      @include xl {
+          font-size: 22px;
+      }
+      @include md {
+      }
+      @include sm {
+      }
+  }  @else if $s == 5 {
+      font-size: 22px;
+      letter-spacing: 0.2px;
+  
+      @include xxl {
+      }
+      @include xl {
+          font-size: 20px;
+      }
+      @include lg {
+      }
+      @include sm {
+      }
+  }  @else if $s == 6 {
+      font-size: 14px;
+  
+      @include xxl {
+      }
+      @include sm {
+      }
+  }  @else {
+  
+  }
+}
+
+%line-through {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 2px solid;
+  border-color: var(--gx-color-blue);
+
+  -webkit-transform:rotate(-5deg);
+  -moz-transform:rotate(-5deg);
+  -ms-transform:rotate(-5deg);
+  -o-transform:rotate(-5deg);
+  transform:rotate(-5deg);
+}
+
+%button {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  
+  @include sm {
+      font-size: 14px;
+  }
+}
+
+%heading {
+  font-family: var(--font-custom);
+  font-weight: 600;
+}
+
+%body20 {
+  font-size: 20px;
+  
+  @include lg {
+      font-size: 18px;
+  }
+  @include sm {
+      font-size: 16px;
+  }
+}
+%body18 {
+  font-size: 18px;
+  
+  @include lg {
+      font-size: 16px;
+  }
+}
+%body16 {
+  font-size: 16px;
+  
+  @include lg {
+      font-size: 14px;
+  }
+}
+%body14 {
+  font-size: 14px;
+}
+
+@mixin container_landing {
+  margin: 0 auto;
+  padding: 0 30px;
+  width: 100%;
+  max-width: 1320px;
+
+  @include lg {
+    padding: 0 15px;
+  }
+}

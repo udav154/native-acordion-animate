@@ -1,0 +1,11 @@
+@import '../../../styles/variables/index.scss';
+
+.details {
+    &__summary {
+      &_title {
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  }
+  

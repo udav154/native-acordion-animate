@@ -1,0 +1,16 @@
+@import '../../../styles/variables/index.scss';
+
+.details {
+    &__summary {
+      &_icon {
+        display: flex;
+        color: var(--gx-color-blue);
+        @include square-icon(16);
+        flex-shrink: 0;
+        margin-right: 18px;
+        transform: rotate(0);
+        transition: var(--gx-transition-short) transform ease;
+      }
+    }
+  }
+  

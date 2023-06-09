@@ -1,0 +1,16 @@
+.details {
+  &__content {
+    position: relative;
+    padding: 18px 20px;
+
+    transition: transform 1s ease;
+    &[open='true'] {
+      -moz-animation-duration: 0.7s;
+      -webkit-animation-duration: 0.7s;
+      -moz-animation-name: fadeInDown;
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+      animation-duration: 0.7s;
+    }
+  }
+}
